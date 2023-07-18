@@ -1,0 +1,31 @@
+header {
+  display: var(--flex); 
+  justify-content: center; 
+  padding-top: var(--space-7-8); 
+  padding-bottom: var(--space-6); 
+}
+
+.health-hero__logo > img {
+  width: 40px; 
+  aspect-ratio: 1 / 1; 
+}
+
+/* For Desktop devices */
+@media only screen and (min-width: 90em) {
+  header {
+    justify-content: start; 
+  }
+
+  div[class="health-hero__logo-wrapper"] {
+    margin-inline: auto; 
+    width: min(100%, 75rem); 
+  }
+
+  .health-hero__logo > img {
+    width: 64px; 
+    aspect-ratio: 1 / 1; 
+  }
+}
+
+
+

@@ -1,0 +1,144 @@
+/* limitations-grid-container */
+
+section[class~="limitations"] {
+  margin-bottom: var(--gap-60);
+}
+
+div[class~="limitations-grid-container"] {
+  display: var(--grid);
+  grid-template-areas: "limitations" "gender" "age" "muscle" "pregnancy" "race";
+  padding-inline: var(--space-6-8);
+}
+
+.limitation-age {
+  grid-area: age;
+}
+
+.limitation-muscle {
+  grid-area: muscle;
+}
+
+.limitation-gender {
+  grid-area: gender;
+}
+
+.limitation-pregnancy {
+  grid-area: pregnancy;
+}
+
+.limitation-race {
+  grid-area: race;
+}
+
+.limitation:not(.limitation-race) {
+  margin-bottom: var(--gap-15);
+}
+
+.limitations-description {
+  grid-area: limitations;
+  text-align: center;
+  margin-bottom: var(--gap-35);
+}
+
+.limitations-description__heading {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  line-height: var(--line-height-tight);
+  color: var(--gunmetal);
+  margin-bottom: var(--gap-20);
+}
+
+.limitations-description__text {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-400);
+  line-height: var(--line-height-normal);
+  color: var(--dark-electric-blue);
+}
+
+.limitation {
+  padding: var(--gap-15);
+  background-color: var(--white);
+  border-radius: var(--radius-6);
+  box-shadow: var(--box-shadow);
+}
+
+.limitation:not(.limitation-race) {
+  margin-bottom: var(--gap-10);
+}
+
+.limitation > div {
+  display: flex;
+  gap: var(--gap-10);
+  align-items: center;
+  margin-bottom: var(--gap-10);
+}
+
+.limitation .limitation__heading {
+  font-size: 1.25rem;
+  font-weight: var(--fw-600);
+  color: var(--gunmetal);
+  line-height: var(--line-height-snug);
+}
+
+.limitation .limitation__text {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-400);
+  line-height: var(--line-height-normal);
+  color: var(--dark-electric-blue);
+}
+
+/* I am targeting tablet devices here from 768px and above  */
+@media only screen and (min-width: 48em) {
+  div[class~="limitations-grid-container"] {
+    grid-template-areas:
+      "limitations limitations limitations limitations"
+      "gender gender age age"
+      "muscle muscle pregnancy pregnancy"
+      ". race race .";
+  }
+
+  .limitation:not(.limitation-race, .limitation-gender, .limitation-muscle) {
+    margin-inline-start: var(--gap-9_40);
+  }
+}
+
+/* I am targeting mobile devices here from 1440px and above  */
+@media only screen and (min-width: 90em) {
+  div[class~="limitations-grid-container"] {
+    grid-template-areas:
+      "limitations limitations  limitations . gender gender"
+      ". .  age age muscle muscle"
+      ". pregnancy pregnancy race race .";
+    grid-template-columns: repeat(6, 1fr);
+    padding-inline: unset;
+  }
+
+  .limitation-gender {
+    transform: translateX(-96px);
+  }
+
+  .limitation.limitation-age {
+    transform: translateX(-40px);
+    margin-inline-start: unset;
+  }
+
+  .limitation:not(.limitation-race) {
+    margin-bottom: var(--gap-20);
+  }
+
+  .limitation.limitation-pregnancy {
+    margin-bottom: unset;
+    margin-inline-start: unset;
+    transform: translateX(-40px);
+  }
+
+  .limitations-description {
+    text-align: left;
+  }
+
+  section[class~="limitations"] {
+    background-image: url(../../assets/images/pattern-curved-line-right.svg);
+    background-repeat: no-repeat;
+    background-position: left 302px top 251.04px;
+  }
+}

@@ -1,0 +1,74 @@
+section[class~="tips"] {
+  margin-bottom: var(--space-9-10);
+}
+
+section[class~="tips"] div[class="container"] {
+  display: var(--flex);
+  flex-wrap: wrap;
+  gap: var(--gap-27_5);
+  padding-inline: var(--space-6-8);
+}
+
+div[class="tips-background"] {
+  padding-block-start: var(--space-7-8);
+  padding-block-end: var(--space-8-9);
+  background: var(--gradient-2);
+  width: min(100%, 87.5rem);
+  margin-inline: auto;
+}
+
+article[class~="tip"] {
+  display: var(--flex);
+  gap: var(--space-6-7);
+  flex-wrap: wrap;
+}
+
+.tip-healthy-eating__heading {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-600);
+  color: var(--gunmetal);
+  margin-bottom: var(--gap-15);
+  line-height: var(--line-height-snug);
+}
+
+.tip-healthy-eating__description {
+  font-size: var(--fs-2);
+  color: var(--dark-electric-blue);
+  font-weight: var(--fw-400);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Targeting tablet devices */
+@media only screen and (min-width: 48em) {
+  article[class~="tip"] > div[class="tip-healthy-eating-text"] {
+    flex-basis: 85%;
+  }
+
+  article[class~="tip"] > * {
+    flex-grow: 1;
+  }
+}
+
+/* Targeting the desktop devices */
+@media only screen and (min-width: 90em) {
+  section[class~="tips"] div[class="container"] {
+    padding-inline: unset;
+  }
+
+  article[class~="tip"] > div[class="tip-healthy-eating-text"] {
+    flex-basis: 100%;
+  }
+
+  article[class~="tip"] > * {
+    flex-grow: 0;
+  }
+
+  article[class~="tip"] {
+    flex-basis: 30%;
+    flex-grow: 1;
+  }
+
+  div[class="tips-background"] {
+    border-radius: var(--radius-13);
+  }
+}

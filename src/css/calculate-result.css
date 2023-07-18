@@ -1,0 +1,368 @@
+section[class~="calculate-result"] {
+  margin-bottom: var(--gap-50);
+}
+
+section[class~="calculate-result"] > div[class="container"] {
+  display: var(--flex);
+  flex-wrap: wrap;
+  gap: var(--gap-22_5);
+  padding-inline: var(--space-6-8);
+  justify-content: center;
+}
+
+div[class="bmi-description"] {
+  text-align: center;
+}
+
+.bmi-description__heading {
+  color: var(--gunmetal);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  line-height: var(--line-height-none);
+  margin-bottom: var(--space-6-7);
+}
+
+.bmi-description__paragraph {
+  color: var(--dark-electric-blue);
+  font-size: var(--fs-2);
+}
+
+form {
+  margin-bottom: var(--space-6);
+}
+
+fieldset {
+  border: none;
+}
+
+/* Styling the form field */
+form legend {
+  color: var(--gunmetal);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-600);
+  margin-bottom: var(--space-6);
+}
+
+/* Styling the BMI calculator and the result display */
+div[class="bmi-component"] {
+  background-color: var(--white);
+  border-radius: var(--radius-6);
+  box-shadow: var(--box-shadow);
+  padding-inline: var(--space-6);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
+}
+
+div[class="units"] {
+  display: flex;
+  gap: var(--gap-15);
+  margin-bottom: var(--space-6);
+}
+
+div[class="units"] label {
+  color: var(--gunmetal);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-600);
+}
+
+.unit-metric,
+.unit-imperial {
+  flex-basis: 50%;
+}
+
+/* select an element whose value is either unit or has unit- */
+div[class|="unit"] {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-10);
+}
+
+input[type="radio"] {
+  appearance: none;
+  width: 31px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid var(--borders);
+  cursor: pointer;
+  outline: none;
+  transition: border 0.2s ease-in, background-color 0.5s ease-in;
+}
+
+/* For devices that use mouses as their primary touch functionality  */
+@media (any-hover: hover) {
+  input[type="radio"]:hover {
+    border: 1px solid var(--blue);
+  }
+}
+
+input[type="radio"]:focus-visible {
+  outline: 2px solid hsl(267, 25%, 28%);
+  outline-offset: 2px;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--blue-checked);
+  border: 0px solid var(--blue-checked);
+  transform: scale(1);
+  box-shadow: 0 0 0 0 rgba(49, 92, 246, 0.4);
+  animation: 2s ease-in-out infinite pulse-radio;
+}
+
+@keyframes pulse-radio {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0px rgba(49, 92, 246, 0.2);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(49, 92, 246, 0);
+  }
+
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(49, 92, 246, 0);
+  }
+}
+
+input[type="radio"]::after {
+  display: block;
+  content: "";
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--blue);
+  transform: translate(7px, 7px) scale(0);
+  transform-origin: center;
+  transition: all 0.3s ease-in;
+}
+
+input[type="radio"]:checked::after {
+  transform: translate(8px, 8px) scale(1);
+}
+
+input[type="text"] {
+  border-radius: var(--radius-5);
+  border: 1px solid var(--borders);
+  padding-left: var(--gap-15);
+  padding-block: var(--gap-12_5);
+  outline: none;
+  caret-color: var(--gunmetal);
+  color: var(--gunmetal);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-2);
+  cursor: pointer;
+}
+
+input[type="text"]:focus {
+  border: 1px solid var(--blue);
+}
+
+input[type="text"]::placeholder {
+  opacity: 0.25;
+}
+
+/* Error state for the input field */
+input[aria-invalid="true"] {
+  border: 1px solid var(--red);
+}
+
+input[aria-invalid="true"] ~ p[aria-live="polite"] {
+  color: var(--red);
+  font-weight: var(--fw-200);
+  font-size: var(--fs-1);
+  margin-top: var(--gap-3_75);
+}
+
+/* Styling the inputs fields for the metric unit */
+div[class~="metric-inputs"] {
+  display: var(--hidden);
+  flex-wrap: wrap;
+  gap: var(--gap-15);
+}
+
+div[class~="metric-inputs"][class~="active"] {
+  display: var(--flex);
+}
+
+div[class="metric-height"],
+div[class="metric-weight"] {
+  flex-basis: 100%;
+  position: relative;
+}
+
+:is(div[class="metric-height"], div[class="metric-weight"]) > label {
+  color: var(--dark-electric-blue);
+  font-size: var(--fs-1);
+  line-height: var(--line-height-relaxed);
+  display: block;
+  margin-bottom: var(--gap-5);
+}
+
+:is(div[class="metric-height"], div[class="metric-weight"])
+  > input[type="text"] {
+  display: block;
+  width: 100%;
+}
+
+:is(div[class="metric-height"], div[class="metric-weight"])
+  > p[class="si-unit"] {
+  display: var(--inline-block);
+  color: var(--blue);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-2);
+  position: absolute;
+  top: 3rem;
+  right: 1.5rem;
+}
+
+/* Styling the input fields for the imperial units */
+div[class~="imperial-inputs"] {
+  display: var(--hidden);
+}
+
+div[class~="imperial-inputs"][class~="active"] {
+  display: var(--block);
+}
+
+div[class="imperial-height"],
+div[class="imperial-weight"] {
+  display: var(--flex);
+  gap: var(--gap-15);
+}
+
+div[class="imperial-height"] {
+  margin-bottom: var(--space-5);
+}
+
+div[class~="imperial-inputs"] > p {
+  color: var(--dark-electric-blue);
+  font-size: var(--fs-1);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--gap-5);
+}
+
+:is(
+    div[class="feet"],
+    div[class="inches"],
+    div[class="stone"],
+    div[class="pounds"]
+  ) {
+  flex-grow: 1;
+  position: relative;
+}
+
+:is(
+    div[class="feet"],
+    div[class="inches"],
+    div[class="stone"],
+    div[class="pounds"]
+  )
+  > input[type="text"] {
+  width: 100%;
+  display: var(--block);
+}
+
+:is(
+    div[class="feet"],
+    div[class="inches"],
+    div[class="stone"],
+    div[class="pounds"]
+  )
+  > p[class="si-unit"] {
+  position: absolute;
+  top: 1.19rem;
+  right: 1.25rem;
+  display: var(--inline-block);
+  color: var(--blue);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-2);
+}
+
+/* Display Result */
+div[class="display-result"] {
+  border-radius: var(--radius-6);
+  background: var(--gradient);
+  padding: 32px;
+  color: var(--white);
+}
+
+div[class="display-result"] > p:first-child {
+  margin-bottom: var(--gap-10);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-3);
+}
+
+div[class="display-result"] > p:last-child {
+  font-weight: var(--fw-100);
+  font-size: var(--fs-1);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--fw-200);
+}
+
+div[class~="display-result__details"] {
+  display: flex;
+  gap: var(--gap-15);
+  flex-wrap: wrap;
+}
+
+div[class~="display-result__details"] > p:first-child {
+  font-weight: var(--fw-600);
+  font-size: var(--fs-2);
+}
+
+div[class~="display-result__details"] > p:first-child > strong {
+  font-size: var(--fs-6);
+}
+
+div[class~="display-result__details"] > p:last-child {
+  font-size: var(--fs-1);
+  font-weight: var(--fw-200);
+  line-height: var(--line-height-relaxed);
+}
+
+/* I am targeting tablet devices here from 768px and above  */
+@media only screen and (min-width: 48em) {
+  div[class="metric-height"],
+  div[class="metric-weight"] {
+    flex-basis: 40%;
+    position: relative;
+    flex-grow: 1;
+  }
+
+  div[class="display-result"] {
+    border-radius: var(--radius-17);
+  }
+
+  div[class~="display-result__details"] > p {
+    flex-basis: 45%;
+    flex-grow: 1;
+  }
+
+  div[class="bmi-component"] {
+    flex-basis: 100%;
+  }
+
+  div[class~="display-result__details"] > p:last-child {
+    align-self: center;
+  }
+}
+
+/* I am targeting mobile devices here from 1440px and above  */
+@media only screen and (min-width: 90em) {
+  section[class~="calculate-result"] > div[class="container"] {
+    gap: var(--gap-20);
+    padding-inline: 0;
+    align-items: center;
+  }
+
+  div[class="bmi-description"] {
+    text-align: left;
+    flex-basis: 45%;
+  }
+
+  div[class="bmi-component"] {
+    flex-basis: 45%;
+    flex-grow: 1;
+  }
+}

@@ -6,7 +6,7 @@
   metric and imperial. <br />
   Responsive for all devices using HTML, CSS and JavaScript.
   <br />
-  <a href="https://health-hero.netlify.app/"><strong>➥ Live Demo</strong></a>
+  <a href="https://health-hero-ng.netlify.app/"><strong>➥ Live Demo</strong></a>
 </div>
 
 <br />

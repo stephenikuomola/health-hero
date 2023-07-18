@@ -378,7 +378,6 @@ class BootStrapAnimation {
 
   #handleIntersection(entries, observer) {
     for (const entry of entries) {
-      console.log(entry);
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);

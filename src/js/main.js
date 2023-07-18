@@ -10,6 +10,20 @@ const BMI_CONSTANT = 703;
 const METRIC = "metric";
 const IMPERIAL = "imperial";
 
+// I need to create constants for realistic inputs the user should enter
+const MIN_KG = 2;
+const MAX_KG = 635;
+const MIN_CM = 50;
+const MAX_CM = 250;
+const MAX_FEET = 8;
+const MIN_FEET = 1;
+const MIN_INCHES = 0;
+const MAX_INCHES = 11;
+const MIN_STONE = 2;
+const MAX_STONE = 100;
+const MIN_POUNDS = 0;
+const MAX_POUNDS = 13;
+
 // Making use of Object-Oriented-Programming, I will be creating an objects that will group the BMI classification and the ranges
 class BmiCategoryRange {
   constructor(category, min, max) {
@@ -272,9 +286,16 @@ class AppComponent {
       const kg = parseFloat(this.#kgInput.value.trim());
       const cm = parseFloat(this.#cmInput.value.trim());
 
-      if (!isFinite(kg) || !isFinite(cm) || kg <= 0 || cm <= 0) {
-        this.#showErrorMessage(kg, this.#kgInput);
-        this.#showErrorMessage(cm, this.#cmInput);
+      if (
+        !isFinite(kg) ||
+        !isFinite(cm) ||
+        kg < MIN_KG ||
+        kg > MAX_KG ||
+        cm > MAX_CM ||
+        cm < MIN_CM
+      ) {
+        this.#showErrorMessage(kg, this.#kgInput, "kilogram");
+        this.#showErrorMessage(cm, this.#cmInput, "centimeter");
         return;
       }
 
@@ -291,21 +312,23 @@ class AppComponent {
       const inches = parseFloat(this.#inInput.value.trim());
 
       if (
-        st < 0 ||
-        lbs < 0 ||
-        ft < 0 ||
-        inches < 0 ||
-        (st <= 0 && lbs <= 0) ||
-        (ft <= 0 && inches <= 0) ||
         !isFinite(st) ||
         !isFinite(lbs) ||
         !isFinite(ft) ||
-        !isFinite(inches)
+        !isFinite(inches) ||
+        ft < MIN_FEET ||
+        ft > MAX_FEET ||
+        inches < MIN_INCHES ||
+        inches > MAX_INCHES ||
+        st < MIN_STONE ||
+        st > MAX_STONE ||
+        lbs < MIN_POUNDS ||
+        lbs > MAX_POUNDS
       ) {
-        this.#showErrorMessage(st, this.#stInput);
-        this.#showErrorMessage(lbs, this.#lbsInput);
-        this.#showErrorMessage(ft, this.#ftInput);
-        this.#showErrorMessage(inches, this.#inInput);
+        this.#showErrorMessage(st, this.#stInput, "stone");
+        this.#showErrorMessage(lbs, this.#lbsInput, "pounds");
+        this.#showErrorMessage(ft, this.#ftInput, "feet");
+        this.#showErrorMessage(inches, this.#inInput, "inches");
         return;
       }
 
@@ -326,12 +349,29 @@ class AppComponent {
     input.nextElementSibling.nextElementSibling.setAttribute("hidden", "");
   }
 
-  #showErrorMessage(value, input) {
+  #showErrorMessage(value, input, identifier) {
     if (!isFinite(value)) {
       this.#errorMessage(input, "Enter a number");
       this.#resetDisplayResult();
-    } else if (value <= 0) {
-      this.#errorMessage(input, "Must be greater than 0");
+    } else if (
+      (value < MIN_KG && identifier == "kilogram") ||
+      (value < MIN_CM && identifier == "centimeter") ||
+      (value < MIN_FEET && identifier == "feet") ||
+      (value < MIN_INCHES && identifier == "inches") ||
+      (value < MIN_STONE && identifier == "stone") ||
+      (value < MIN_POUNDS && identifier == "pounds")
+    ) {
+      this.#errorMessage(input, "Number is too Small");
+      this.#resetDisplayResult();
+    } else if (
+      (value > MAX_KG && identifier == "kilogram") ||
+      (value > MAX_CM && identifier == "centimeter") ||
+      (value > MAX_FEET && identifier == "feet") ||
+      (value > MAX_INCHES && identifier == "inches") ||
+      (value > MAX_STONE && identifier == "stone") ||
+      (value > MAX_POUNDS && identifier == "pounds")
+    ) {
+      this.#errorMessage(input, "Number is too Large");
       this.#resetDisplayResult();
     } else {
       this.#removeErrorMessage(input, "");

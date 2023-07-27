@@ -132,7 +132,7 @@ input[type="radio"]::after {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   background-color: var(--blue);
-  transform: translate(7px, 7px) scale(0);
+  transform: translate(8px, 8px) scale(0);
   transform-origin: center;
   transition: all 0.3s ease-in;
 }

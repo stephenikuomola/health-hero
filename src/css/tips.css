@@ -21,6 +21,12 @@ article[class~="tip"] {
   display: var(--flex);
   gap: var(--space-6-7);
   flex-wrap: wrap;
+  align-items: center;
+}
+
+article[class~="tip"] > img {
+  width: 4rem;
+  height: 4rem;
 }
 
 .tip-healthy-eating__heading {

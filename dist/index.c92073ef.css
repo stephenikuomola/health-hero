@@ -102,7 +102,8 @@
   --fs-5: clamp(2.37rem, calc(2.29rem + .52vw), 2.76rem);
   --fs-6: clamp(3.16rem, calc(3.06rem + .7vw), 3.68rem);
   --space-1: clamp(.19rem, calc(.18rem + .08vw), .25rem);
-  --space-2: clamp(.38rem, calc(.36rem + .08vw), .44rem) --space-3: clamp(.56rem, calc(.54rem + .17vw), .69rem);
+  --space-2: clamp(.38rem, calc(.36rem + .08vw), .44rem);
+  --space-3: clamp(.56rem, calc(.54rem + .17vw), .69rem);
   --space-4: clamp(.75rem, calc(.73rem + .17vw), .88rem);
   --space-5: clamp(1.13rem, calc(1.09rem + .25vw), 1.31rem);
   --space-6: clamp(1.5rem, calc(1.45rem + .33vw), 1.75rem);
@@ -163,7 +164,7 @@ body {
   background-size: 100% 14.5%;
   width: 100%;
   min-height: 100vh;
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
 .sr-only {
@@ -365,7 +366,7 @@ input[type="radio"]:after {
   width: 15px;
   transition: all .3s ease-in;
   display: block;
-  transform: translate(7px, 7px)scale(0);
+  transform: translate(8px, 8px)scale(0);
 }
 
 input[type="radio"]:checked:after {
@@ -668,6 +669,12 @@ article[class~="tip"] {
   display: var(--flex);
   gap: var(--space-6-7);
   flex-wrap: wrap;
+  align-items: center;
+}
+
+article[class~="tip"] > img {
+  width: 4rem;
+  height: 4rem;
 }
 
 .tip-healthy-eating__heading {

@@ -198,7 +198,7 @@ h6 {
 body {
   width: 100%;
   min-height: 100vh;
-  overflow-x: scroll;
+  overflow-x: hidden;
   line-height: var(--line-height-normal);
   background-color: white;
 

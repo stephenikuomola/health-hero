@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TraversetheDOM/health-hero.git"
+    "url": "git+https://github.com/stephenikuomola/health-hero.git"
   },
   "keywords": [],
   "author": "Stephen Ikuomola",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TraversetheDOM/health-hero/issues"
+    "url": "https://github.com/stephenikuomola/health-hero/issues"
   },
-  "homepage": "https://github.com/TraversetheDOM/health-hero#readme",
+  "homepage": "https://github.com/stephenikuomola/health-hero#readme",
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.9.2",
     "@parcel/transformer-webmanifest": "^2.9.2",
